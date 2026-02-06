@@ -21,8 +21,11 @@ const Login = () => {
       username: data?.username.trim(),
       password: data?.password.trim(),
     };
-    dispatch(loginUser(cleanData));
-    navigate("/products");
+    dispatch(loginUser(cleanData))
+      .unwrap()
+      .then(() => {
+        navigate("/products");
+      });
   };
 
   useEffect(() => {
